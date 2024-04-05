@@ -21,6 +21,13 @@ repositories {
 }
 
 dependencies {
+    // JSON Parser
+    implementation("com.beust:klaxon:5.6")
+
+    // Config Loader
+    implementation("com.sksamuel.hoplite:hoplite-core:2.7.5")
+    implementation("com.sksamuel.hoplite:hoplite-yaml:2.7.5")
+
     // Ktor Server
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
