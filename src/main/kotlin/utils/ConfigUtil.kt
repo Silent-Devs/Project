@@ -8,6 +8,10 @@ class ConfigUtil {
     )
 
     data class ApiConfig(
+        val gemini: GeminiConfig
+    )
+
+    data class GeminiConfig(
         val url: String,
         val key: String
     )
