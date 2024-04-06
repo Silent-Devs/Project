@@ -2,3 +2,6 @@ api:
   gemini:
     url: https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent
     key: # Your API key here
+  weather:
+    url: https://api.weatherapi.com/v1
+    key: # Your API key here
