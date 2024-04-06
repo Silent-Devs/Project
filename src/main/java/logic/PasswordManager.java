@@ -68,9 +68,9 @@ public class PasswordManager {
             for (int i = 0; i < arr.length(); i++) {
                 if (arr.getJSONObject(i).getString("website").equals(website)
                 && arr.getJSONObject(i).getString("username").equals(username)
-                && EncryptDecrypt.encryptDecrypt(arr.getJSONObject(i).getString("password")).equals(oldPassword)) {
+                && arr.getJSONObject(i).getString("password").equals(oldPassword)) {
 
-                    arr.getJSONObject(i).put("password", EncryptDecrypt.encryptDecrypt(newPassword));
+                    arr.getJSONObject(i).put("password", newPassword);
                     System.out.println("Setting new password to " + newPassword);
                     FileOutputStream fos = new FileOutputStream(path);
                     fos.write(obj.toString().getBytes());
@@ -131,7 +131,7 @@ public class PasswordManager {
                 /*System.out.println(array.getJSONObject(i).getString("username"));*/
                 JSONObject temp = array.getJSONObject(i);
                 accountList.add(new Account(temp.getString("username"),
-                        EncryptDecrypt.encryptDecrypt(temp.getString("password")), temp.getString("website")));
+                        temp.getString("password"), temp.getString("website")));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -145,7 +145,7 @@ public class PasswordManager {
            JSONArray arr = obj.getJSONArray("data");
            JSONObject objCreate = new JSONObject();
            objCreate.put("username", username);
-           objCreate.put("password", EncryptDecrypt.encryptDecrypt(password));
+           objCreate.put("password", password);
            objCreate.put("website", website);
 
            // Checks if the user already registered in website

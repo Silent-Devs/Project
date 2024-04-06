@@ -10,8 +10,4 @@ public class EncryptDecrypt {
         }
         return output.toString();
     }
-
-    public static void main(String[] args) {
-        System.out.println(encryptDecrypt("12345"));
-    }
 }

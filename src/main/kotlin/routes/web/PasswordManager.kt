@@ -40,7 +40,7 @@ fun Route.addAccount() {
             val password = parameters["passwordname"];
             val username = parameters["username"]
             val website = parameters["websitename"]
-            PasswordManager.addAccount(password, username, website)
+            PasswordManager.addAccount(website, username, password)
             call.respondRedirect("/passwordmanager")
         }
     }
@@ -52,6 +52,10 @@ fun Route.deleteAccount() {
             val parameters = call.receiveParameters()
             val username = parameters["username"]
             val website = parameters["websitename"]
+            println("\n\n\n\n")
+            println(username)
+            println(website)
+            println("\n\n\n")
             PasswordManager.deleteAccount(website, username)
             call.respondRedirect("/passwordmanager")
         }
@@ -76,9 +80,9 @@ fun Route.passwordManager() {
                 h2 { +"Your list of passwords" }
                 table {
                     tr {
-                        th { +"Website" }
-                        th { +"Username" }
                         th { +"Password" }
+                        th { +"Username" }
+                        th { +"Website" }
                     }
                     for (n in PasswordManager.accountList) {
                         tr {
