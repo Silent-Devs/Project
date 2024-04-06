@@ -7,7 +7,7 @@ fun Application.registerWebRoutes() {
     routing {
         index()
         studyPlanner()
-        Passwordmanager()
+        passwordManager()
         academicHelper()
         examPreperation()
         toDoList()
