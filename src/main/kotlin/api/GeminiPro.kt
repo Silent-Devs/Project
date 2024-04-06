@@ -18,6 +18,8 @@ class GeminiPro (url: String, key: String) {
      */
     private val api = "$url?key=$key"
 
+    val messages: ArrayList<String> = ArrayList()
+
     /**
      * The contents of the request, saving every message sent by user and response from model
      * Used for multi-turn conversation support
@@ -27,16 +29,26 @@ class GeminiPro (url: String, key: String) {
     /**
      * Get response from GeminiPro API
      * @param message The message sent by user
+     * @param beforePrompt The prompt before user message
+     * @param afterPrompt The prompt after user message
      * @return The response from GeminiPro API
      */
-    fun getResponse(message: String): String {
+    fun getResponse(
+        message: String,
+        beforePrompt: String = "",
+        afterPrompt: String = "",
+        userName: String = "You",
+        aiName: String = "AI"
+    ): String {
+        messages.add("$userName: $message")
+
         // Add user message to contents
         contents.add(
             mapOf(
                 "role" to "user",
                 "parts" to arrayOf(
                     mapOf(
-                        "text" to message
+                        "text" to "$beforePrompt\n$message\n$afterPrompt"
                     )
                 )
             )
@@ -63,6 +75,8 @@ class GeminiPro (url: String, key: String) {
 
         // Get the first response sent back by the model
         val modelResponse = results[0]
+
+        messages.add("$aiName: $modelResponse")
 
         // Add model response to contents
         contents.add(

@@ -24,6 +24,9 @@ dependencies {
     // JSON Parser
     implementation("com.beust:klaxon:5.6")
 
+    // Markdown to HTML parser
+    implementation("org.jetbrains:markdown:0.7.0")
+
     // Config Loader
     implementation("com.sksamuel.hoplite:hoplite-core:2.7.5")
     implementation("com.sksamuel.hoplite:hoplite-yaml:2.7.5")
@@ -36,6 +39,7 @@ dependencies {
     implementation("io.ktor:ktor-server-content-negotiation")
     implementation("io.ktor:ktor-server-content-negotiation-jvm")
     implementation("io.ktor:ktor-serialization-gson-jvm")
+    implementation("io.ktor:ktor-server-double-receive")
 
     // Ktor Client
     implementation("io.ktor:ktor-client-core-jvm")
