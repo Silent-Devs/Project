@@ -31,7 +31,7 @@ body{
     height: 100vh;
     overflow: hidden;
     animation-name: huaChu;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-play-state: paused;
     background-image: url("/art_resource/welcome.jpg");
 }
@@ -41,7 +41,7 @@ body{
     height: 100vh;
     overflow: hidden;
     animation-name: rightHuadong;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-play-state: paused;
     background-size: cover;
     background-image: url("/art_resource/welcome2.jpg");
