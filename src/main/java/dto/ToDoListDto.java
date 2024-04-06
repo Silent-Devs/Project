@@ -7,19 +7,19 @@ package dto;
 public class ToDoListDto {
 
     public Date date;
-    public List<Event> events;
+    public static List<Event> events = new ArrayList<>();
 
     public ToDoListDto() {
         this.date = new Date();
-        this.events = new ArrayList<>();
+        events = new ArrayList<>();
     }
 
     public ToDoListDto(Date date, List<Event> events) {
         this.date = date;
-        this.events = events;
+        ToDoListDto.events = events;
     }
 
-    public void addEvent(Event event) {
+    public static void addEvent(Event event) {
         events.add(event);
     }
 
@@ -27,7 +27,7 @@ public class ToDoListDto {
         events.remove(event);
     }
 
-    public void addSubject(String name, String subject) {
+    public static void addSubject(String name, String subject) {
         for (Event event : events) {
             if (event.getName().equals(name)) {
                 event.setSubject(subject);
