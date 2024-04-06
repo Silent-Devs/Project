@@ -2,23 +2,24 @@ package dto;
     import java.util.ArrayList;
     import java.util.Date;
     import java.util.List;
+    import java.io.Serializable;
 
-public class ToDoList {
+public class ToDoListDto {
 
-    private Date date;
-    private List<Event> events;
+    public Date date;
+    public static List<Event> events = new ArrayList<>();
 
-    public ToDoList() {
+    public ToDoListDto() {
         this.date = new Date();
-        this.events = new ArrayList<>();
+        events = new ArrayList<>();
     }
 
-    public ToDoList(Date date, List<Event> events) {
+    public ToDoListDto(Date date, List<Event> events) {
         this.date = date;
-        this.events = events;
+        ToDoListDto.events = events;
     }
 
-    public void addEvent(Event event) {
+    public static void addEvent(Event event) {
         events.add(event);
     }
 
@@ -26,7 +27,7 @@ public class ToDoList {
         events.remove(event);
     }
 
-    public void addSubject(String name, String subject) {
+    public static void addSubject(String name, String subject) {
         for (Event event : events) {
             if (event.getName().equals(name)) {
                 event.setSubject(subject);

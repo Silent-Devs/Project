@@ -1,0 +1,29 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(/pixeltype.ttf)
+}
+
+
+body {
+    margin-left: 10%;
+    margin-top: 10vh;
+    margin-right: 10%;
+    font-family: myFirstFont;
+    font-size: x-large;
+    color: #030303;
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-image: url("/art_resource/td.jpg");
+
+}
+li{
+    border-bottom: #0b1331 1px solid;
+    width: 60%;
+    margin-top: 20px;
+}
+
+button{
+    background-color: #344175;
+    border: none;
+    color:white;
+}
