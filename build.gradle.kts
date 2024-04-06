@@ -21,6 +21,16 @@ repositories {
 }
 
 dependencies {
+    // JSON Parser
+    implementation("com.beust:klaxon:5.6")
+
+    // Markdown to HTML parser
+    implementation("org.jetbrains:markdown:0.7.0")
+
+    // Config Loader
+    implementation("com.sksamuel.hoplite:hoplite-core:2.7.5")
+    implementation("com.sksamuel.hoplite:hoplite-yaml:2.7.5")
+
     // Ktor Server
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
@@ -29,6 +39,7 @@ dependencies {
     implementation("io.ktor:ktor-server-content-negotiation")
     implementation("io.ktor:ktor-server-content-negotiation-jvm")
     implementation("io.ktor:ktor-serialization-gson-jvm")
+    implementation("io.ktor:ktor-server-double-receive")
 
     // Ktor Client
     implementation("io.ktor:ktor-client-core-jvm")
@@ -38,6 +49,8 @@ dependencies {
     // Logging
     implementation("ch.qos.logback:logback-classic:$logback_version")
 
+    // JSON parser
+    implementation("org.json:json:20210307")
     // Test dependencies
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
