@@ -10,16 +10,23 @@ import utils.ConfigUtil
 import utils.MarkdownUtil
 
 fun BODY.continueExamPreparation() {
-    form(action = "/exam-prep", method = FormMethod.post) {
-        textInput {
-            name = "description"
-            placeholder = "Tell the AI the action you would like to perform"
+    div("form"){
+        form(action = "/exam-prep", method = FormMethod.post) {
+            textInput {
+                name = "description"
+                placeholder = "Tell the AI the action you would like to perform"
+            }
+            br
+            button {
+                type = ButtonType.submit
+                id = "submissionButton"
+            }
         }
-        br
-        button {
-            type = ButtonType.submit
-            id = "submissionButton"
-            +"Submit"
+        div("back") {
+            p{
+                onClick="location='/'"
+                +"GO BACK"
+            }
         }
     }
 }
@@ -76,26 +83,30 @@ fun Route.examPreperation() {
             call.respondHtml {
                 head {
                     title { +"Exam Preparation Bot" }
+                    link(rel = "stylesheet", href = "/css/exam.css", type = "text/css")
                 }
                 body {
-                    form(action = "/exam-prep", method = FormMethod.post) {
-                        textInput {
-                            name = "description"
-                            placeholder =
-                                "Enter theories, examples and problems for an exam and I will prepare questions for you."
-                        }
-                        select {
-                            name = "first"
-                            style = "display: none"
-                            option { +"First" }
-                        }
-                        br
-                        button {
-                            type = ButtonType.submit
-                            id = "submissionButton"
-                            +"Submit"
-                        }
+                    div ("form"){
+                        form(action = "/exam-prep", method = FormMethod.post) {
+                            textInput {
+                                name = "description"
+                                placeholder =
+                                    "Enter theories, examples and problems for an exam and I will prepare questions for you."
+                            }
+                            select {
+                                name = "first"
+                                style = "display: none"
+                                option { +"First" }
+                            }
+                            br
+                            button {
+                                type = ButtonType.submit
+                                id = "submissionButton"
+                            }
                     }
+
+                    }
+
                 }
             }
         }
@@ -112,6 +123,7 @@ fun Route.examPreperation() {
             call.respondHtml {
                 head {
                     title { +"Exam Preparation Bot" }
+                    link(rel = "stylesheet", href = "/css/preparePlan.css", type = "text/css")
                 }
                 body {
                     unsafe { raw(MarkdownUtil.toHtml(response)) }

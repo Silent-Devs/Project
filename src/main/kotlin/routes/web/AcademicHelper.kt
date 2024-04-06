@@ -76,7 +76,7 @@ fun Route.academicHelper() {
         get {
             call.respondHtml {
                 head {
-                    title { +"Study Planner" }
+                    title { +"Academic Helper" }
                 }
                 body {
                     chatbox()
@@ -89,7 +89,7 @@ fun Route.academicHelper() {
             geminiPro.getResponse(message)
             call.respondHtml {
                 head {
-                    title { +"Study Planner" }
+                    title { +"Academic Helper" }
                 }
                 body {
                     for (chat in geminiPro.messages) {
