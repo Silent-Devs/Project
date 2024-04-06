@@ -1,5 +1,6 @@
 package dto;
 
+import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -102,5 +103,9 @@ public class Event {
 
     public String getSubject() {
         return subject;
+    }
+
+    public Date getTime() {
+        return eventDate;
     }
 }
