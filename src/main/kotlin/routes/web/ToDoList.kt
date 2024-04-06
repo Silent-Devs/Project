@@ -14,7 +14,6 @@ fun Route.toDoList(){
                 title { +"To do list" }
             }
             body {
-
             }
 
         }

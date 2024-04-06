@@ -201,3 +201,4 @@ class WeatherApi(private val baseUrl: String, private val key: String) {
         return geminiPro.getResponse(message)
     }
 }
+
