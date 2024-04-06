@@ -32,6 +32,7 @@ fun Route.toDoList() {
         call.respondHtml {
             head {
                 title { +"Password Manager" }
+                link(rel = "stylesheet", href = "/css/todolist.css", type = "text/css")
             }
             body {
                 ul {
