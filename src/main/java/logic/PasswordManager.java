@@ -13,9 +13,12 @@ public class PasswordManager {
     public static void main(String[] args) {
         // Always
         updateAccounts(path);
-        addAccount("cubik.com", "Qian", "12345");
+        /*addAccount("cubik.com", "Qian", "12345");
         getListData();
-        modifyAccount("www.cihaozhang.com", "cihaozhang123", "qoiueryiouqioehioqwueiorhioqwehrioheuwiqhr");
+        addAccount("www.cihaozhang.com", "Cihao Zhang", "12345");
+        getListData();
+        modifyAccount("www.cihaozhang.com", "Cihao Zhang", "12345","1231");
+        getListData();*/
         getListData();
     }
 
@@ -50,7 +53,7 @@ public class PasswordManager {
         }
     }
 
-    public static void modifyAccount(String website, String username, String newPassword) {
+    public static void modifyAccount(String website, String username, String oldPassword, String newPassword) {
         try {
             JSONObject obj = new JSONObject(getContent());
             JSONArray arr = obj.getJSONArray("data");
@@ -58,11 +61,16 @@ public class PasswordManager {
                 System.out.println("It is empty! Please try again!");
                 return;
             }
+            if (oldPassword.equals(newPassword)) {
+                System.out.println("It is the same password! Please try again!");
+                return;
+            }
             for (int i = 0; i < arr.length(); i++) {
                 if (arr.getJSONObject(i).getString("website").equals(website)
-                && arr.getJSONObject(i).getString("username").equals(username)) {
+                && arr.getJSONObject(i).getString("username").equals(username)
+                && EncryptDecrypt.encryptDecrypt(arr.getJSONObject(i).getString("password")).equals(oldPassword)) {
 
-                    arr.getJSONObject(i).put("password", newPassword);
+                    arr.getJSONObject(i).put("password", EncryptDecrypt.encryptDecrypt(newPassword));
                     System.out.println("Setting new password to " + newPassword);
                     FileOutputStream fos = new FileOutputStream(path);
                     fos.write(obj.toString().getBytes());
@@ -123,7 +131,7 @@ public class PasswordManager {
                 /*System.out.println(array.getJSONObject(i).getString("username"));*/
                 JSONObject temp = array.getJSONObject(i);
                 accountList.add(new Account(temp.getString("username"),
-                        temp.getString("password"), temp.getString("website")));
+                        EncryptDecrypt.encryptDecrypt(temp.getString("password")), temp.getString("website")));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -137,7 +145,7 @@ public class PasswordManager {
            JSONArray arr = obj.getJSONArray("data");
            JSONObject objCreate = new JSONObject();
            objCreate.put("username", username);
-           objCreate.put("password", password);
+           objCreate.put("password", EncryptDecrypt.encryptDecrypt(password));
            objCreate.put("website", website);
 
            // Checks if the user already registered in website
