@@ -8,10 +8,16 @@ class ConfigUtil {
     )
 
     data class ApiConfig(
-        val gemini: GeminiConfig
+        val gemini: GeminiConfig,
+        val weather: WeatherApiConfig
     )
 
     data class GeminiConfig(
+        val url: String,
+        val key: String
+    )
+
+    data class WeatherApiConfig(
         val url: String,
         val key: String
     )
