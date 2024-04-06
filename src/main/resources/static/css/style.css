@@ -1,0 +1,231 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(/pixeltype.ttf)
+}
+
+*{
+    box-sizing: border-box;
+    font-family: myFirstFont;
+    overflow: hidden;
+}
+
+body{
+    margin: 0;
+    background-image:url("/art_resource/welcome.jpg");
+}
+
+.column {
+    float: left;
+}
+
+
+
+.circle {
+    width: 60%;
+    height: 100vh;
+    overflow: hidden;
+    animation-name: huaChu;
+    animation-duration: 2s;
+    animation-play-state: paused;
+    background-image: url("/art_resource/welcome.jpg");
+}
+
+.right {
+    width: 40%;
+    height: 100vh;
+    overflow: hidden;
+    animation-name: rightHuadong;
+    animation-duration: 2s;
+    animation-play-state: paused;
+    background-size: cover;
+    background-image: url("/art_resource/welcome2.jpg");
+}
+
+.right h1{
+    text-align: center;
+    margin-top: 20vh;
+    font-size: 70px;
+    color: #493232;
+}
+
+
+.circle-container{
+    width: 1300px;
+    height: 1300px;
+    position: relative;
+    top: 49vh;
+    left: 0;
+    transform: translate(-50%, -50%);
+    animation-name: example;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    pointer-events: none;
+    background-image: url("/art_resource/fangdatuoxie1.png");
+    background-position: center;
+    background-size: contain;
+}
+
+
+
+.circle-container:hover{
+    animation-play-state: paused;
+}
+
+
+.choice-one{
+    height: 50%;
+    width: 50%;
+    position: relative;
+    float: left;
+    pointer-events: auto;
+}
+
+.choice-one a{
+    float: right;
+    margin-bottom: 10%;
+    transform: translate(0%,1000%) rotate(-90deg);
+    font-size: 10vh;
+    color: white;
+}
+
+
+.choice-two{
+    height: 50%;
+    width: 50%;
+    position: relative;
+    float: right;
+    pointer-events: auto;
+}
+
+.choice-two a{
+    float: right;
+    margin-bottom: 10%;
+    transform: translate(-250%,1200%) ;
+    font-size: 10vh;
+    color: white;
+}
+
+.choice-three{
+    height: 50%;
+    width: 50%;
+    position: relative;
+    float: right;
+    pointer-events: auto;
+}
+
+.choice-three a{
+    float: right;
+    margin-bottom: 10%;
+    transform: translate(-320%,400%) rotate(90deg);
+    font-size: 10vh;
+    color: white;
+}
+
+.choice-four{
+    height: 50%;
+    width: 50%;
+    position: relative;
+    float: left;
+    pointer-events: auto;
+}
+
+.choice-four a{
+    float: right;
+    margin-bottom: 10%;
+    transform: translate(-50%,250%) rotate(180deg);
+    font-size: 10vh;
+    color: white;
+}
+
+a {
+    text-shadow: 5px 5px black;
+}
+.board a{
+    margin-left: 35%;
+    color: white;
+    font-size: 10vh;
+}
+
+a:hover{
+    color: black;
+    text-shadow: 5px 5px white;
+}
+
+.board{
+    margin-top: 20%;
+    background-image: url("/art_resource/box.png");
+    background-size: cover;
+    width: 100%;
+    height: 60%;
+}
+
+
+
+
+@keyframes rightHuadong{
+    0% {transform:translate(0%, 0%)}
+    100% {transform:translate(105%, 0%)}
+}
+
+
+@keyframes huaChu{
+    0% {transform:translate(0%, 0%)}
+    100% {transform:translate(-120%, 0%)}
+}
+
+@keyframes example {
+    0%   {transform:translate(-50%, -50%) rotate(0deg)}
+    25%  {transform:translate(-50%, -50%) rotate(90deg)}
+    50%  {transform:translate(-50%, -50%) rotate(180deg)}
+    75%  {transform:translate(-50%, -50%) rotate(270deg)}
+    100% {transform:translate(-50%, -50%) rotate(360deg)}
+}
+
+@keyframes up{
+    0% {transform:translate(0%, 120%)}
+    100% {transform:translate(0%, 0%)}
+}
+
+
+.main-interface {
+    height: 100vh;
+    width: 100%;
+    animation-name: up;
+    animation-duration: 1s;
+    animation-play-state: paused;
+    padding-top: 4vh;
+}
+
+.links{
+    display: block;
+    height: 10vh;
+    width: 30%;
+    background-image: url("/art_resource/table.png");
+    background-size: cover;
+    margin-left: 20%;
+    margin-top: 30px;
+    padding-top: 5px;
+    padding-left: 20px;
+}
+
+.links p {
+    margin-top: 20px;
+    font-size: 40px;
+
+}
+
+
+.loading-screen{
+    display: none;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(80, 134, 99);
+}
+
+.title{
+    margin-top: 10vh;
+    margin-left: 20vh;
+    background-color: black;
+    height: 50px;
+    width: 500px;
+}
