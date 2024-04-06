@@ -63,12 +63,13 @@ fun Click() {
 }
 
 fun Route.passwordManager() {
-    get("/passwordmanager") {
+    get("/password-manager") {
         PasswordManager.updateAccounts("src/main/java/logic/database.json")
         println(PasswordManager.accountList.size)
         call.respondHtml {
             head {
                 title { +"Password Manager" }
+                link(rel = "stylesheet", href = "/css/password.css", type = "text/css")
             }
             body {
                 h1 { +"Password Manager" }
