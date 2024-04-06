@@ -2,18 +2,19 @@ package dto;
     import java.util.ArrayList;
     import java.util.Date;
     import java.util.List;
+    import java.io.Serializable;
 
-public class ToDoList {
+public class ToDoListDto {
 
-    private Date date;
-    private List<Event> events;
+    public Date date;
+    public List<Event> events;
 
-    public ToDoList() {
+    public ToDoListDto() {
         this.date = new Date();
         this.events = new ArrayList<>();
     }
 
-    public ToDoList(Date date, List<Event> events) {
+    public ToDoListDto(Date date, List<Event> events) {
         this.date = date;
         this.events = events;
     }
