@@ -12,16 +12,18 @@ import utils.MarkdownUtil
 fun BODY.chatbox() = div {
     id = "chatbox"
     style = "z-index: 9;"
-    form(action = "/academic-helper", method = FormMethod.post) {
-        textInput {
-            name = "message"
-            placeholder = "Chat with your AI Academic Helper"
-        }
-        br
-        button {
-            type = ButtonType.submit
-            id = "sendButton"
-            +"Send"
+    div("form"){
+        form(action = "/academic-helper", method = FormMethod.post) {
+            textInput {
+                name = "message"
+                placeholder = "Chat with your AI Academic Helper"
+            }
+            br
+            button {
+                type = ButtonType.submit
+                id = "sendButton"
+
+            }
         }
     }
 }
@@ -48,6 +50,7 @@ fun Route.academicHelper() {
             * Personalized study plans
             * Financial aid and scholarship options
             
+            **Counseling and Mental Health**
             **Counseling and Mental Health**
             
             * Balancing life and reducing stress
@@ -77,6 +80,7 @@ fun Route.academicHelper() {
             call.respondHtml {
                 head {
                     title { +"Academic Helper" }
+                    link(rel = "stylesheet", href = "/css/advisor.css", type = "text/css")
                 }
                 body {
                     chatbox()
@@ -90,6 +94,7 @@ fun Route.academicHelper() {
             call.respondHtml {
                 head {
                     title { +"Academic Helper" }
+                    link(rel = "stylesheet", href = "/css/chat.css", type = "text/css")
                 }
                 body {
                     for (chat in geminiPro.messages) {
@@ -104,6 +109,12 @@ fun Route.academicHelper() {
                         }
                     }
                     chatbox()
+                    div("back") {
+                        p{
+                            onClick="location='/'"
+                            +"GO BACK"
+                        }
+                    }
                 }
             }
         }

@@ -11,5 +11,8 @@ fun Application.registerWebRoutes() {
         academicHelper()
         examPreperation()
         toDoList()
+        modifyAccount()
+        addAccount()
+        deleteAccount()
     }
 }

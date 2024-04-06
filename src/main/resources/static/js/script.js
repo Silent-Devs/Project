@@ -1,7 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-
-
-
+document.addEventListener('DOMContentLoaded', function () {
 
 
 });
@@ -14,9 +11,6 @@ function load_list() {
         document.querySelector('.right').remove();
         document.querySelector('.main-interface').style.animationPlayState = 'running';
     });
-
-
-
 }
 
 function submitForm() {
@@ -27,6 +21,6 @@ function submitForm() {
     });
 }
 
-function sleep (time) {
+function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }

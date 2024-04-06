@@ -117,6 +117,7 @@ object HttpUtil {
             runBlocking {
                 httpResponseBody = request(url, requestBuilder).bodyAsText()
             }
+            println(httpResponseBody)
             return httpResponseBody
         }
 
