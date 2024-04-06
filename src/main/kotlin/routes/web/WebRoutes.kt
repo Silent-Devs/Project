@@ -7,5 +7,6 @@ fun Application.registerWebRoutes() {
     routing {
         index()
         studyPlanner()
+        academicHelper()
     }
 }
