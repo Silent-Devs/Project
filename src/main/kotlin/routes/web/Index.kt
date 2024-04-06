@@ -1,7 +1,5 @@
 package routes.web
 import api.WeatherApi
-
-import api.WeatherApi
 import io.ktor.server.application.*
 import io.ktor.server.html.*
 import io.ktor.server.request.*
@@ -45,7 +43,10 @@ fun Route.index() {
                 div("column right") {
                     div("board") {
                         h1 {
-                            +"ALL IN ONE TOOL"
+                            +"StudyBuddy"
+                        }
+                        h3 {
+                            +"All In One Study Companion"
                         }
                         a {
                             onClick = "load_list()"
@@ -89,7 +90,7 @@ fun Route.index() {
                     }
                     div("column weather") {
                         div("content") {
-                            p {
+                            h2 {
                                 +"$city, $region, $country"
                             }
                             h2 {

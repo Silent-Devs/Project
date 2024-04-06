@@ -11,7 +11,13 @@
 
 body{
     margin: 0;
-    background-image:url("/art_resource/welcome.jpg");
+    background-color: #2a51c7;
+}
+
+.right h3{
+    text-align: center;
+    font-size: x-large;
+    color: #493232;
 }
 
 .column {
@@ -157,7 +163,7 @@ a:hover{
 .content h2{
     margin-top: 10%;
     margin-left: 10%;
-    font-size: xxx-large;
+    font-size: x-large;
 }
 .content img{
     margin-top: 10%;
