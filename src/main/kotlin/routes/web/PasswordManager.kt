@@ -7,8 +7,8 @@ import kotlinx.html.body
 import kotlinx.html.head
 import kotlinx.html.title
 
-fun Route.Passwordmanager(){
-    get("/passwordmanager") {
+fun Route.passwordManager() {
+    get("/password-manager") {
         call.respondHtml {
             head {
                 title { +"Password Manager" }
@@ -18,7 +18,5 @@ fun Route.Passwordmanager(){
             }
 
         }
-
-}
-
+    }
 }
