@@ -108,4 +108,8 @@ public class Event {
     public Date getTime() {
         return eventDate;
     }
+
+    public String toString() {
+        return name + " " + eventDate + " " + checked + " " + priority + " " + subject;
+    }
 }
