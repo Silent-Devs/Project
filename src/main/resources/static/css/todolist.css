@@ -16,6 +16,11 @@ body {
     background-image: url("/art_resource/td.jpg");
 
 }
+li{
+    border-bottom: #0b1331 1px solid;
+    width: 60%;
+    margin-top: 20px;
+}
 
 button{
     background-color: #344175;

@@ -31,10 +31,13 @@ fun Route.toDoList() {
     get("/to-do-list") {
         call.respondHtml {
             head {
-                title { +"Password Manager" }
+                title { +"To do list" }
                 link(rel = "stylesheet", href = "/css/todolist.css", type = "text/css")
             }
             body {
+                h1 {
+                    +"To do list"
+                }
                 ul {
                     ul {
                         for (event in ToDoListDto.events) {
