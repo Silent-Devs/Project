@@ -9,7 +9,7 @@ class MarkdownUtil {
         fun toHtml(markdown: String): String {
             val flavour = CommonMarkFlavourDescriptor()
             val parsedTree = MarkdownParser(flavour).buildMarkdownTreeFromString(markdown)
-           return HtmlGenerator(markdown, parsedTree, flavour).generateHtml()
+            return HtmlGenerator(markdown, parsedTree, flavour).generateHtml()
         }
     }
 }
