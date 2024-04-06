@@ -11,30 +11,30 @@ import utils.MarkdownUtil
 
 fun BODY.continueStudyPlanner() {
     div("form"){
-    form(action = "/study-planner", method = FormMethod.post) {
-        textInput {
-            name = "description"
-            placeholder = "Tell the AI what do you want to change"
+        form(action = "/study-planner", method = FormMethod.post) {
+            textInput {
+                name = "description"
+                placeholder = "Tell the AI what do you want to change"
 
-        }
-        select {
-            name = "first"
-            style = "display: none"
-            option { +"Second" }
-        }
-        br
-        button {
-            type = ButtonType.submit
-            id = "submissionButton"
-        }
-        div("back") {
-            p{
-                onClick="location='/'"
-                +"GO BACK"
             }
-        }
+            select {
+                name = "first"
+                style = "display: none"
+                option { +"Second" }
+            }
+            br
+            button {
+                type = ButtonType.submit
+                id = "submissionButton"
+            }
+            div("back") {
+                p{
+                    onClick="location='/'"
+                    +"GO BACK"
+                }
+            }
 
-    }
+        }
     }
 }
 

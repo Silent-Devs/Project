@@ -10,9 +10,11 @@ body {
     margin-top: 10vh;
     margin-right: 10%;
     font-family: myFirstFont;
-    font-size: xxx-large;
+    font-size: x-large;
     color: #052613;
-    background-color: #8dd071;
+    background-size: contain;
+    background-repeat: repeat-y;
+    background-image: url("/art_resource/plan.jpg");
 }
 
 .form {
@@ -21,7 +23,7 @@ body {
     height: 50vh;
     width: 70%;
     background-image: url("/art_resource/form.png");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
 }
 
@@ -37,7 +39,7 @@ input[type="text" i] {
 
 button {
     border: none;
-    background-color: #8dd071;
+    background-color: #d8ffc7;
     margin-top: 20vh;
     margin-left: 3%;
     height: 70px;
@@ -57,6 +59,7 @@ button:hover{
     display: block;
     text-align: center;
     margin-bottom: 20vh;
+    padding-bottom: 100px;
 }
 
 .back p{

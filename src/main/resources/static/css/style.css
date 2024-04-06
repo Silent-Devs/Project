@@ -50,8 +50,8 @@ body{
 
 
 .circle-container{
-    width: 1300px;
-    height: 1300px;
+    width: 148%;
+    height: 148%;
     position: relative;
     top: 49vh;
     left: 0;
@@ -59,7 +59,7 @@ body{
     animation-name: example;
     animation-duration: 8s;
     animation-iteration-count: infinite;
-    pointer-events: none;
+    background-repeat: no-repeat;
     background-image: url("/art_resource/fangdatuoxie1.png");
     background-position: center;
     background-size: contain;
@@ -69,86 +69,22 @@ body{
 
 .circle-container:hover{
     animation-play-state: paused;
-}
-
-
-.choice-one{
-    height: 50%;
-    width: 50%;
-    position: relative;
-    float: left;
-    pointer-events: auto;
-}
-
-.choice-one a{
-    float: right;
-    margin-bottom: 10%;
-    transform: translate(0%,1000%) rotate(-90deg);
-    font-size: 10vh;
-    color: white;
-}
-
-
-.choice-two{
-    height: 50%;
-    width: 50%;
-    position: relative;
-    float: right;
-    pointer-events: auto;
-}
-
-.choice-two a{
-    float: right;
-    margin-bottom: 10%;
-    transform: translate(-250%,1200%) ;
-    font-size: 10vh;
-    color: white;
-}
-
-.choice-three{
-    height: 50%;
-    width: 50%;
-    position: relative;
-    float: right;
-    pointer-events: auto;
-}
-
-.choice-three a{
-    float: right;
-    margin-bottom: 10%;
-    transform: translate(-320%,400%) rotate(90deg);
-    font-size: 10vh;
-    color: white;
-}
-
-.choice-four{
-    height: 50%;
-    width: 50%;
-    position: relative;
-    float: left;
-    pointer-events: auto;
-}
-
-.choice-four a{
-    float: right;
-    margin-bottom: 10%;
-    transform: translate(-50%,250%) rotate(180deg);
-    font-size: 10vh;
-    color: white;
+    width: 150%;
+    height: 150%;
 }
 
 a {
-    text-shadow: 5px 5px black;
+    text-shadow: 5px 5px white;
 }
 .board a{
     margin-left: 35%;
-    color: white;
+    color: black;
     font-size: 10vh;
 }
 
 a:hover{
-    color: black;
-    text-shadow: 5px 5px white;
+    color: white;
+    text-shadow: 5px 5px black;
 }
 
 .board{
@@ -158,7 +94,6 @@ a:hover{
     width: 100%;
     height: 60%;
 }
-
 
 
 
@@ -194,12 +129,46 @@ a:hover{
     animation-duration: 1s;
     animation-play-state: paused;
     padding-top: 4vh;
+    background-size: contain;
+    background-image: url("/art_resource/weather.jpg");
+}
+
+.tables {
+    width: 60%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.weather {
+    width: 40%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.content{
+    margin-top: 20%;
+    height: 70%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-image: url("/art_resource/weather.png");
+    background-size: contain;
+}
+
+.content h2{
+    margin-top: 10%;
+    margin-left: 10%;
+    font-size: xxx-large;
+}
+.content img{
+    margin-top: 10%;
+    margin-left: 10%;
+    object-fit: cover;
 }
 
 .links{
     display: block;
     height: 10vh;
-    width: 30%;
+    width: 50%;
     background-image: url("/art_resource/table.png");
     background-size: cover;
     margin-left: 20%;
@@ -216,7 +185,7 @@ a:hover{
 
 .links:hover{
     height: 11vh;
-    width: 33%;
+    width: 55%;
 }
 
 

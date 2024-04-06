@@ -10,5 +10,6 @@ fun Application.registerWebRoutes() {
         Passwordmanager()
         academicHelper()
         examPreperation()
+        toDoList()
     }
 }
