@@ -3,10 +3,10 @@ package dto;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Event1 {
+public class Event {
 
     public String name;
-    public Date EventDate;
+    public Date eventDate;
 
     public boolean checked;
 
@@ -14,9 +14,9 @@ public class Event1 {
 
     public String subject;
 
-    public Event1(String name, Date EventDate, boolean checked, int priority, String subject) {
+    public Event(String name, Date EventDate, boolean checked, int priority, String subject) {
         this.name = name;
-        this.EventDate = EventDate;
+        this.eventDate = EventDate;
         this.checked = checked;
         this.priority = priority;
         this.subject = subject;
@@ -79,7 +79,7 @@ public class Event1 {
     }
 
     public String getEventDate() {
-        return EventDate.toString();
+        return eventDate.toString();
     }
 
     public String isCompleted() {

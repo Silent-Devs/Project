@@ -1,5 +1,4 @@
 package dto;
-    import java.time.LocalDate;
     import java.util.ArrayList;
     import java.util.Date;
     import java.util.List;
@@ -7,28 +6,28 @@ package dto;
 public class ToDoList {
 
     private Date date;
-    private List<Event1> events;
+    private List<Event> events;
 
     public ToDoList() {
         this.date = new Date();
         this.events = new ArrayList<>();
     }
 
-    public ToDoList(Date date, List<Event1> events) {
+    public ToDoList(Date date, List<Event> events) {
         this.date = date;
         this.events = events;
     }
 
-    public void addEvent(Event1 event) {
+    public void addEvent(Event event) {
         events.add(event);
     }
 
-    public void removeEvent(Event1 event) {
+    public void removeEvent(Event event) {
         events.remove(event);
     }
 
     public void addSubject(String name, String subject) {
-        for (Event1 event : events) {
+        for (Event event : events) {
             if (event.getName().equals(name)) {
                 event.setSubject(subject);
                 return;
@@ -38,7 +37,7 @@ public class ToDoList {
     }
 
     public void removeSubject(String name) {
-        for (Event1 event : events) {
+        for (Event event : events) {
             if (event.getName().equals(name)) {
                 event.setSubject(null);
                 return;
@@ -48,7 +47,7 @@ public class ToDoList {
     }
 
     public void displayEvents() {
-        for (Event1 event : events) {
+        for (Event event : events) {
             System.out.println("Name: " + event.getName());
             System.out.println("Date: " + event.getEventDate());
             System.out.println("Completed: " + event.isCompleted());
@@ -56,13 +55,5 @@ public class ToDoList {
             System.out.println("Subject: " + event.getSubject());
             System.out.println("--------------------");
         }
-    }
-
-    public static void main(String[] args) {
-        ToDoList toDoList = new ToDoList();
-        System.out.println("hi");
-        System.out.println(toDoList.date);
-        toDoList.addEvent(new Event1("test", new Date(), false, 1, "test"));
-        toDoList.displayEvents();
     }
 }
