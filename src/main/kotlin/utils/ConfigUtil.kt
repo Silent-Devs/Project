@@ -4,7 +4,13 @@ import com.sksamuel.hoplite.ConfigLoader
 
 class ConfigUtil {
     data class Config(
+        val ktor: KtorConfig,
         val api: ApiConfig
+    )
+
+    data class KtorConfig(
+        val host: String,
+        val port: Int
     )
 
     data class ApiConfig(
