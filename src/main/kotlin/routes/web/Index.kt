@@ -1,4 +1,5 @@
 package routes.web
+import api.WeatherApi
 
 import api.WeatherApi
 import io.ktor.server.application.*
@@ -107,3 +108,4 @@ fun Route.index() {
         }
     }
 }
+
