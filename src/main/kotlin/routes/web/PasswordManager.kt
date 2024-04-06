@@ -1,6 +1,5 @@
 package routes.web
 
-import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.html.*
 import io.ktor.server.request.*
@@ -28,7 +27,7 @@ fun Route.modifyAccount() {
             println("\n\n\n\n\n")
             ClipboardManager.copyPassword(password)
             PasswordManager.modifyAccount(website, username, oldPassword, password)
-            call.respondRedirect("/passwordmanager")
+            call.respondRedirect("/password-manager")
         }
     }
 }
@@ -41,7 +40,7 @@ fun Route.addAccount() {
             val username = parameters["username"]
             val website = parameters["websitename"]
             PasswordManager.addAccount(website, username, password)
-            call.respondRedirect("/passwordmanager")
+            call.respondRedirect("/password-manager")
         }
     }
 }
@@ -57,13 +56,9 @@ fun Route.deleteAccount() {
             println(website)
             println("\n\n\n")
             PasswordManager.deleteAccount(website, username)
-            call.respondRedirect("/passwordmanager")
+            call.respondRedirect("/password-manager")
         }
     }
-}
-
-fun Click() {
-
 }
 
 fun Route.passwordManager() {
