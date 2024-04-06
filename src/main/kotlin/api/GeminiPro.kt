@@ -12,19 +12,49 @@ import java.util.ArrayList
  * @param url API URL
  * @param key API Key
  */
-class GeminiPro (url: String, key: String) {
+class GeminiPro (url: String, key: String, prePrompt: String? = null, prePromptResponse: String? = null) {
     /**
      * The URL which requests are sent to
      */
     private val api = "$url?key=$key"
 
-    val messages: ArrayList<String> = ArrayList()
+    val messages: ArrayList<Map<String, String>> = ArrayList()
 
     /**
      * The contents of the request, saving every message sent by user and response from model
      * Used for multi-turn conversation support
      */
     private val contents: ArrayList<Map<String, Any>> = ArrayList()
+
+    init {
+        if (prePrompt != null) {
+            if (prePromptResponse != null) {
+                contents.add(
+                    mapOf(
+                        "role" to "user",
+                        "parts" to arrayOf(
+                            mapOf(
+                                "text" to prePrompt
+                            )
+                        )
+                    )
+                )
+                contents.add(
+                    mapOf(
+                        "role" to "model",
+                        "parts" to arrayOf(
+                            mapOf(
+                                "text" to prePromptResponse
+                            )
+                        )
+                    )
+                )
+            } else {
+                val data = getResponse(prePrompt, addMessage = false)
+                println("Pre-prompt Response: $data")
+            }
+        }
+    }
 
     /**
      * Get response from GeminiPro API
@@ -38,9 +68,16 @@ class GeminiPro (url: String, key: String) {
         beforePrompt: String = "",
         afterPrompt: String = "",
         userName: String = "You",
-        aiName: String = "AI"
+        aiName: String = "AI",
+        addMessage: Boolean = true
     ): String {
-        messages.add("$userName: $message")
+        if (addMessage) {
+            messages.add(
+                mapOf(
+                    userName to message
+                )
+            )
+        }
 
         // Add user message to contents
         contents.add(
@@ -76,7 +113,13 @@ class GeminiPro (url: String, key: String) {
         // Get the first response sent back by the model
         val modelResponse = results[0]
 
-        messages.add("$aiName: $modelResponse")
+        if (addMessage) {
+            messages.add(
+                mapOf(
+                    aiName to modelResponse
+                )
+            )
+        }
 
         // Add model response to contents
         contents.add(

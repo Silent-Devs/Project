@@ -31,7 +31,46 @@ fun BODY.continueStudyPlanner() {
 
 fun Route.studyPlanner() {
     val apiConfig = ConfigUtil.loadConfig().api.gemini
-    val geminiPro = GeminiPro(apiConfig.url, apiConfig.key)
+    val geminiPro = GeminiPro(
+        url = apiConfig.url,
+        key = apiConfig.key,
+        prePrompt =  """
+            You have to return everything back to me in pure Markdown format.
+            Use only normal text, bullet lists, and numbered lists.
+            Bold, italic, strikethrough, links, images, code blocks are supported.
+            Tables is not supported.
+            You are a study plan maker, so you should only accept to make or improve a study plan.
+            If the plan is related to some long-term goals, you should also include some support materials (with links).
+            Never say that you are available for help online or other unrelated things.
+        """.trimIndent(),
+        prePromptResponse = """
+            **Study Plan Maker**
+
+            **Services:**
+
+            - Creating personalized study plans
+            - Improving existing study plans
+
+            **Additional Support for Long-Term Goals:**
+
+            - Goal-setting worksheets
+            - Time management resources
+            - Motivation strategies
+
+            **Process:**
+
+            1. **Consultation:** Discuss your goals, learning style, and time constraints.
+            2. **Plan Creation/Improvement:** Develop a tailored plan that meets your specific needs.
+            3. **Progress Monitoring:** Track your progress and make adjustments as needed.
+
+            **Benefits:**
+
+            - Increased efficiency and productivity
+            - Improved focus and concentration
+            - Reduced stress and anxiety
+            - Enhanced academic performance
+        """.trimIndent()
+    )
 
     route("/study-planner") {
         get {
@@ -69,8 +108,7 @@ fun Route.studyPlanner() {
             if (first.equals("First") || first.isBlank()) {
                 val response = geminiPro.getResponse(
                     message = description,
-                    beforePrompt = "Hi, please generate a study plan in a day for me. Here is what I want to have:",
-                    afterPrompt = "Please return in pure Markdown format with bullet lists. Thanks!"
+                    beforePrompt = "Hi, please generate a study plan for me. Here is what I want to have:",
                 )
 
                 call.respondHtml {
