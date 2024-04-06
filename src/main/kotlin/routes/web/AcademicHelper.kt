@@ -49,6 +49,7 @@ fun Route.academicHelper() {
             * Financial aid and scholarship options
             
             **Counseling and Mental Health**
+            **Counseling and Mental Health**
             
             * Balancing life and reducing stress
             * Time management and organization strategies
