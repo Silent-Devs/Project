@@ -10,15 +10,10 @@ import utils.ConfigUtil
 import utils.MarkdownUtil
 
 fun BODY.continueExamPreparation() {
-    form(action = "/Exam-Prep", method = FormMethod.post) {
+    form(action = "/exam-prep", method = FormMethod.post) {
         textInput {
             name = "description"
             placeholder = "Tell the AI the action you would like to perform"
-        }
-        select {
-            name = "first"
-            style = "display: none"
-            option { +"Second" }
         }
         br
         button {
@@ -29,12 +24,12 @@ fun BODY.continueExamPreparation() {
     }
 }
 
-fun Route.ExamPreperation() {
+fun Route.examPreperation() {
     val apiConfig = ConfigUtil.loadConfig().api.gemini
     val geminiPro = GeminiPro(
         url = apiConfig.url,
         key = apiConfig.key,
-        prePrompt =  """
+        prePrompt = """
             You have to return everything back to me in pure Markdown format.
             Use only normal text, bullet lists, and numbered lists.
             Bold, italic, strikethrough, links, images, code blocks are supported.
@@ -76,14 +71,14 @@ fun Route.ExamPreperation() {
         """.trimIndent()
     )
 
-    route("/Exam-Prep") {
+    route("/exam-prep") {
         get {
             call.respondHtml {
                 head {
                     title { +"Exam Preparation Bot" }
                 }
                 body {
-                    form(action = "/Exam-Prep", method = FormMethod.post) {
+                    form(action = "/exam-prep", method = FormMethod.post) {
                         textInput {
                             name = "description"
                             placeholder =
@@ -104,57 +99,31 @@ fun Route.ExamPreperation() {
                 }
             }
         }
+
         post {
             val parameters = call.receiveParameters()
-            val first = parameters["first"] ?: ""
             val description = parameters["description"] ?: ""
-            if (first.equals("First") || first.isBlank()) {
-                val response = geminiPro.getResponse(
-                    message = description,
-                    beforePrompt = "Please generate questions, both in multple choice and short answers about the following" +
-                            "theory: ",
-                )
-
-                call.respondHtml {
-                    head {
-                        title { +"Exam Preparation Bot" }
-                    }
-                    body {
-                        unsafe { raw(MarkdownUtil.toHtml(response)) }
-                        br {}
-                        p {
-                            +"If you would like to add more, just tell the AI what you would like to add."
-                            +" "
-                            +"If you are satisfied with the new questions, save them to your device or print them out."
-                            +" "
-                            +"Otherwise, I can also explain the solutions to each and walk you through the process."
-                        }
-                        continueExamPreparation()
-                    }
+            val response = geminiPro.getResponse(
+                message = description,
+                beforePrompt = "Please either add more questions or explain the solutions to each and walk you through the process." +
+                        "depending on the given prompt:",
+                afterPrompt = "Please return the new result in pure Markdown format with bullet lists. Thanks!"
+            )
+            call.respondHtml {
+                head {
+                    title { +"Exam Preparation Bot" }
                 }
-            } else {
-                val response = geminiPro.getResponse(
-                    message = description,
-                    beforePrompt = "Please either add more questions or explain the solutions to each and walk you through the process." +
-                            "depending on the given prompt:",
-                    afterPrompt = "Please return the new result in pure Markdown format with bullet lists. Thanks!"
-                )
-                call.respondHtml {
-                    head {
-                        title { +"Exam Preparation Bot" }
+                body {
+                    unsafe { raw(MarkdownUtil.toHtml(response)) }
+                    br {}
+                    p {
+                        +"If you would like to add more, just tell the AI what you would like to add."
+                        +" "
+                        +"If you are satisfied with the new questions, save them to your device or print them out."
+                        +" "
+                        +"Otherwise, I can also explain the solutions to each and walk you through the process."
                     }
-                    body {
-                        unsafe { raw(MarkdownUtil.toHtml(response)) }
-                        br {}
-                        p {
-                            +"If you would like to add more, just tell the AI what you would like to add."
-                            +" "
-                            +"If you are satisfied with the new questions, save them to your device or print them out."
-                            +" "
-                            +"Otherwise, I can also explain the solutions to each and walk you through the process."
-                        }
-                        continueExamPreparation()
-                    }
+                    continueExamPreparation()
                 }
             }
         }
