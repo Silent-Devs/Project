@@ -60,9 +60,9 @@ fun Route.index() {
                     }
                 }
                 div("main-interface"){
-                    div ("links"){
+                    div ("links"){onClick="location='/study-planner'"
                         p {
-                            +"example1"
+                            +"Study Planner"
                         }
                     }
                     div ("links"){

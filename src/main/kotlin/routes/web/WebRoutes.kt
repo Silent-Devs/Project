@@ -7,5 +7,7 @@ fun Application.registerWebRoutes() {
     routing {
         index()
         studyPlanner()
+        Passwordmanager()
+
     }
 }

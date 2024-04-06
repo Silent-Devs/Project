@@ -10,10 +10,12 @@ import utils.ConfigUtil
 import utils.MarkdownUtil
 
 fun BODY.continueStudyPlanner() {
+    div("form"){
     form(action = "/study-planner", method = FormMethod.post) {
         textInput {
             name = "description"
             placeholder = "Tell the AI what do you want to change"
+
         }
         select {
             name = "first"
@@ -24,8 +26,15 @@ fun BODY.continueStudyPlanner() {
         button {
             type = ButtonType.submit
             id = "submissionButton"
-            +"Submit"
         }
+        div("back") {
+            p{
+                onClick="location='/'"
+                +"GO BACK"
+            }
+        }
+
+    }
     }
 }
 
@@ -77,26 +86,30 @@ fun Route.studyPlanner() {
             call.respondHtml {
                 head {
                     title { +"Study Planner" }
+                    link(rel = "stylesheet", href = "/css/study.css", type = "text/css")
                 }
                 body {
-                    form(action = "/study-planner", method = FormMethod.post) {
-                        textInput {
-                            name = "description"
-                            placeholder =
-                                "Describe your subjects to study, tasks to complete, and any preferences (break time, etc.)"
-                        }
-                        select {
-                            name = "first"
-                            style = "display: none"
-                            option { +"First" }
-                        }
-                        br
-                        button {
-                            type = ButtonType.submit
-                            id = "submissionButton"
-                            +"Submit"
+                    div("form"){
+                        form(action = "/study-planner", method = FormMethod.post) {
+                            textInput {
+                                name = "description"
+                                placeholder =
+                                    "Describe your subjects to study, tasks to complete, and any preferences (break time, etc.)"
+                            }
+                            select {
+                                name = "first"
+                                style = "display: none"
+                                option { +"First" }
+                            }
+                            br
+                            button {
+                                type = ButtonType.submit
+                                id = "submissionButton"
+
+                            }
                         }
                     }
+
                 }
             }
         }
@@ -114,6 +127,7 @@ fun Route.studyPlanner() {
                 call.respondHtml {
                     head {
                         title { +"Study Plan" }
+                        link(rel = "stylesheet", href = "/css/plan.css", type = "text/css")
                     }
                     body {
                         unsafe { raw(MarkdownUtil.toHtml(response)) }
@@ -135,9 +149,12 @@ fun Route.studyPlanner() {
                 call.respondHtml {
                     head {
                         title { +"Study Plan" }
+                        link(rel = "stylesheet", href = "/css/plan.css", type = "text/css")
                     }
                     body {
                         unsafe { raw(MarkdownUtil.toHtml(response)) }
+                        br {}
+                        br {}
                         br {}
                         p {
                             +"If you are satisfied with the new study plan, save it to your device or print it out."
