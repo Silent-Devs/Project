@@ -8,6 +8,7 @@ fun Application.registerWebRoutes() {
         index()
         studyPlanner()
         Passwordmanager()
-
+        academicHelper()
+        examPreperation()
     }
 }
